@@ -78,7 +78,7 @@ Need more help? Visit the FAQ & Troubleshooting Guide: https://docs.layeredge.io
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-OR you can use one line command code auto install
+## Can use one line command code auto install
 ```
 wget -O LayerEdge.sh https://raw.githubusercontent.com/nicomunasatya/LayerEdge-Node/main/LayerEdge.sh && chmod +x LayerEdge.sh && ./LayerEdge.sh
 ```
