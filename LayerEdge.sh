@@ -17,30 +17,30 @@ check_status() {
     fi
 }
 
-echo "Mulai instalasi otomatis light-node dan dependensinya..."
+echo "Start automatic installation of light-node and its dependencies..."
 
 # Perbarui sistem
-echo "Memperbarui sistem..."
+echo "Updating the system..."
 sudo apt update && sudo apt upgrade -y
 check_status "memperbarui sistem"
 
 # Instal dependensi dasar (git, curl, screen)
-echo "Menginstal dependensi dasar..."
+echo "Installing base dependencies..."
 sudo apt install -y git curl screen
-check_status "menginstal dependensi dasar"
+check_status "install base dependencies"
 
 # Cek dan instal Go (versi 1.21.6)
 if ! command -v go >/dev/null 2>&1 || [ "$(go version | cut -d' ' -f3 | cut -d'.' -f2)" -lt 21 ]; then
-    echo "Menginstal Go 1.21.6..."
+    echo "Installing Go 1.21.6..."
     wget https://go.dev/dl/go1.21.6.linux-amd64.tar.gz
     sudo tar -C /usr/local -xzf go1.21.6.linux-amd64.tar.gz
     rm go1.21.6.linux-amd64.tar.gz
     echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
     source ~/.bashrc
     go version
-    check_status "menginstal Go"
+    check_status "Installing Go"
 else
-    echo -e "${GREEN}Go $(go version) sudah terinstal dan memenuhi syarat (1.21.6 atau lebih tinggi)${NC}"
+    echo -e "${GREEN}Go $(go version) already installed and meets the requirements (1.21.6 or higher))${NC}"
 fi
 
 # Cek dan instal Rust (versi 1.85.1)
